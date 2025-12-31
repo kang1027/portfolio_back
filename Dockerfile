@@ -15,8 +15,8 @@ RUN cargo build --release && rm -rf src
 
 # Copy source code
 COPY src ./src
+COPY user_token.txt ./
 COPY Rocket.toml ./
-COPY static ./static
 
 # Build the application
 RUN cargo build --release
@@ -49,4 +49,4 @@ USER appuser
 
 EXPOSE 5000
 
-CMD [./portfolio_back]
+CMD ["./portfolio_back"]
