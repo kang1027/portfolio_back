@@ -1,0 +1,20 @@
+[package]
+name = "portfolio_back"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rocket = { version = "0.5", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+chrono = { version = "0.4", features = ["serde"] }
+dotenv = "0.15"
+colored = "2.1"
+rocket_cors = "0.6"
+jsonwebtoken = "9"
+reqwest = { version = "0.11", features = ["json", "blocking"] }
+rocket_ws = "0.1"
+tokio-stream = { version = "0.1", features = ["sync"] }
+teloxide = { version = "0.17.0", features = ["macros"] }
+log = "0.4"
