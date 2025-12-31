@@ -41,7 +41,6 @@ async fn rocket() -> _ {
             "http://localhost:5173",
             "http://kang1027.com",
             "https://kang1027.com",
-            "http://192.0.0.2:5173",
         ]))
         .allow_credentials(true)
         .max_age(Some(3600))

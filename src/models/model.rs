@@ -1,6 +1,5 @@
 use std::sync::{Arc, RwLock};
 
-use rocket_ws::stream::DuplexStream;
 use serde::{Deserialize, Serialize};
 use tokio::sync::broadcast;
 
@@ -11,8 +10,6 @@ pub struct AppState {
     pub cached_now_playing: Arc<RwLock<NowPlaying>>,
     pub broadcast_tx: broadcast::Sender<NowPlaying>,
 }
-
-pub type WsStream = DuplexStream;
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
