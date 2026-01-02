@@ -39,8 +39,8 @@ async fn rocket() -> _ {
     let cors = CorsOptions::default()
         .allowed_origins(AllowedOrigins::some_exact(&[
             "http://localhost:5173",
-            "http://kang1027.com",
             "https://kang1027.com",
+            "https://www.kang1027.com",
         ]))
         .allow_credentials(true)
         .max_age(Some(3600))
