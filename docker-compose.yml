@@ -8,4 +8,4 @@ services:
     env_file:
       - .env
     ports:
-      - 1047:1047
+      - "127.0.0.1:1047:1047"
