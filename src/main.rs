@@ -39,6 +39,7 @@ async fn rocket() -> _ {
     let cors = CorsOptions::default()
         .allowed_origins(AllowedOrigins::some_exact(&[
             "http://localhost:5173",
+            "http://127.0.0.1:5173",
             "http://localhost:3001",
             "https://kang1027.com",
             "https://www.kang1027.com",
