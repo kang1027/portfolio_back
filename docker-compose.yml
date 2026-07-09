@@ -7,5 +7,12 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      USER_TOKEN_PATH: /app/data/user_token.txt
+    volumes:
+      - portfolio_back_data:/app/data
     ports:
       - "127.0.0.1:1047:1047"
+
+volumes:
+  portfolio_back_data:

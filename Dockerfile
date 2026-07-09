@@ -40,8 +40,10 @@ WORKDIR /app
 COPY --from=builder /app/target/release/portfolio_back /app/portfolio_back
 
 # Copy configuration files
+RUN mkdir -p /app/data
 COPY --from=builder /app/Rocket.toml ./Rocket.toml
 COPY --from=builder /app/user_token.txt ./user_token.txt
+COPY --from=builder /app/user_token.txt ./data/user_token.txt
 
 # Change ownership to app user
 RUN chown -R appuser:appuser /app

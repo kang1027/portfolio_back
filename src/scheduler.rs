@@ -1,6 +1,9 @@
-use std::{error::Error, fs, time::Duration};
+use std::{error::Error, time::Duration};
 
-use portfolio_back::initialize_apple_music_api_jwt::get_apple_music_bearer_token;
+use portfolio_back::{
+    apple_music_user_token::read_user_token,
+    initialize_apple_music_api_jwt::get_apple_music_bearer_token,
+};
 use reqwest::Client;
 use serde_json::Value;
 use tokio::time::{Instant, interval_at};
@@ -18,7 +21,11 @@ impl Scheduler {
 
             let res = match Self::fetch_apple_music(&app_state).await {
                 Ok(res) => {
-                    println!("track: {}", res.track.clone().unwrap().title);
+                    if let Some(track) = &res.track {
+                        println!("track: {}", track.title);
+                    } else {
+                        println!("track: none");
+                    }
 
                     res
                 }
@@ -59,9 +66,7 @@ impl Scheduler {
         let developer_token = get_apple_music_bearer_token();
         let mut user_token = { app_state.user_token.read().unwrap().clone() };
         if user_token.is_empty() {
-            user_token = str::from_utf8(&fs::read("user_token.txt").unwrap())
-                .unwrap()
-                .to_string();
+            user_token = read_user_token()?;
         }
 
         let client = Client::new();
